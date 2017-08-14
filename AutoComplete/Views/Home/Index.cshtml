@@ -1,0 +1,36 @@
+﻿<div class="jumbotron">
+    <h1>Coveo Backend Coding Challenge</h1>
+    <p class="lead">Design an API endpoint that provides auto-complete suggestions for large cities.</p>
+
+    @*<p><button onclick="getLocation();this.disabled=true" class="btn btn-danger btn-lg">Activate Geolocation</button></p>
+    <p id="demo"></p>
+    <br />*@
+    <p><a id ="test1" href="/suggestions?q=town&latitude=45.282405&longitude=-73.2619127" class="btn btn-primary btn-lg" target="_blank">Test 1 - town</a></p>
+    <p><a id ="test2" href="/suggestions?q=Londo&latitude=45.282405&longitude=-73.2619127" class="btn btn-primary btn-lg" target="_blank">Test 2 - Londo</a></p>
+    <p><a id ="test3" href="/suggestions?q=Mont&latitude=45.282405&longitude=-73.2619127" class="btn btn-primary btn-lg" target="_blank">Test 3 - Mont</a></p>
+    <p><a id ="test4" href="/suggestions?q=Montrea&latitude=45.282405&longitude=-73.2619127" class="btn btn-primary btn-lg" target="_blank">Test 4 - Montrea</a></p>
+    <p><a id ="test5" href="/suggestions?q=Queb&latitude=45.282405&longitude=-73.2619127" class="btn btn-primary btn-lg" target="_blank">Test 5 - Queb</a></p>
+</div>
+
+<script>
+    //HTTPS Required
+    var x = document.getElementById("demo");
+
+    function getLocation() {
+        x.innerHTML = "Wait...";
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +  "<br>Longitude: " + position.coords.longitude;
+        document.getElementById("test1").href = document.getElementById("test1").href + "&latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude;
+        document.getElementById("test2").href = document.getElementById("test2").href + "&latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude;
+        document.getElementById("test3").href = document.getElementById("test3").href + "&latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude;
+        document.getElementById("test4").href = document.getElementById("test4").href + "&latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude;
+        document.getElementById("test5").href = document.getElementById("test5").href + "&latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude;
+    }
+</script>

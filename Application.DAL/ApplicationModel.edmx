@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ApplicationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TLK_Cities">
+          <Key>
+            <PropertyRef Name="GeonameId" />
+          </Key>
+          <Property Name="GeonameId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Latitude" Type="float" Nullable="false" />
+          <Property Name="Longitude" Type="float" Nullable="false" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="ProvStateCode" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="Population" Type="int" />
+          <Property Name="Language" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="InsDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdDate" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="ApplicationModelStoreContainer">
+          <EntitySet Name="TLK_Cities" EntityType="Self.TLK_Cities" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ApplicationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ApplicationEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cities" EntityType="ApplicationModel.City" />
+          </EntityContainer>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="GeonameId" />
+          </Key>
+          <Property Name="GeonameId" Nullable="false" Type="Int32" />
+          <Property Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Latitude" Nullable="false" Type="Double" />
+          <Property Name="Longitude" Nullable="false" Type="Double" />
+          <Property Name="CountryCode" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="ProvStateCode" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Population" Type="Int32" />
+          <Property Name="Language" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="InsDate" Nullable="false" Precision="3" Type="DateTime" />
+          <Property Name="UpdDate" Precision="3" Type="DateTime" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ApplicationModelStoreContainer" CdmEntityContainer="ApplicationEntities">
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="ApplicationModel.City">
+              <MappingFragment StoreEntitySet="TLK_Cities">
+                <ScalarProperty Name="UpdDate" ColumnName="UpdDate" />
+                <ScalarProperty Name="InsDate" ColumnName="InsDate" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Population" ColumnName="Population" />
+                <ScalarProperty Name="ProvStateCode" ColumnName="ProvStateCode" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GeonameId" ColumnName="GeonameId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
